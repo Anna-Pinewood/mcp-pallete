@@ -33,7 +33,7 @@ uv sync
 ![Tools in claude toolkit](./mcp2.png)
 
 As the result we get palletes:
-![Pallete](./cat_pallete.jpg)
+![Pallete](./cat_palette.jpg)
 
 
 
