@@ -1,13 +1,17 @@
 from typing import Any
 import httpx
 from mcp.server.fastmcp import FastMCP
+import json
 
-from consts import IMAGGA_API_KEY, IMAGGA_API_SECRET
+# from consts import IMAGGA_API_KEY, IMAGGA_API_SECRET
 
 from generate_pallete import generate_palette_image
 
 # Initialize FastMCP server
 mcp = FastMCP("weather")
+
+IMAGGA_API_KEY = os.getenv("IMAGGA_API_KEY")
+IMAGGA_API_SECRET = os.getenv("IMAGGA_API_SECRET")
 
 
 async def get_img_palette(image_path: str) -> dict[str, Any]:
@@ -74,6 +78,11 @@ async def get_img_palette(image_path: str) -> dict[str, Any]:
 
 @mcp.tool()
 async def get_img_palette_tool(image_path: str) -> str:
+    """Get the raw color palette data from an image using the Imagga API.
+
+    Args:
+        image_path: The local path to the image file.
+    """
     data = await get_img_palette(image_path)
     return json.dumps(data, indent=4)
 
@@ -85,6 +94,19 @@ async def generate_palette_img_tool(image_path: str,
                                     max_colors: int = 7,
                                     width: int = 500,
                                     height: int = 100) -> str:
+    """Generate a color palette image from an input image.
+
+    Calls the Imagga API to extract colors, then generates an image visualizing
+    the dominant colors as vertical stripes.
+
+    Args:
+        image_path: The local path to the input image file.
+        output_path: The path where the generated palette image will be saved.
+        color_key: The key in the Imagga response to use for colors ('image_colors', 'background_colors', 'foreground_colors'). Defaults to 'image_colors'.
+        max_colors: The maximum number of dominant colors to include in the palette image. Defaults to 7.
+        width: The width of the generated palette image in pixels. Defaults to 500.
+        height: The height of the generated palette image in pixels. Defaults to 100.
+    """
     data = await get_img_palette(image_path)
     save_path = generate_palette_image(data,
                                        output_path, color_key, max_colors, width, height)
