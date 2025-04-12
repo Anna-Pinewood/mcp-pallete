@@ -5,7 +5,7 @@
 ```json
 {
   "mcpServers": {
-    "mcp-puppeteer": {
+    "mcp-pallete": {
       "command": "uv",
       "args": [
         "--directory",
