@@ -1,5 +1,6 @@
+import asyncio
 import os
-from typing import Any
+import sys
 import httpx
 from mcp.server.fastmcp import FastMCP
 import json
@@ -9,13 +10,13 @@ import json
 from generate_pallete import generate_palette_image
 
 # Initialize FastMCP server
-mcp = FastMCP("weather")
+mcp = FastMCP("mcp-pallete")
 
 IMAGGA_API_KEY = os.getenv("IMAGGA_API_KEY")
 IMAGGA_API_SECRET = os.getenv("IMAGGA_API_SECRET")
 
 
-async def get_img_palette(image_path: str) -> dict[str, Any]:
+async def get_img_palette(image_path: str) -> dict:
     async with httpx.AsyncClient() as client:
         try:
             response = await client.post(
@@ -109,10 +110,37 @@ async def generate_palette_img_tool(image_path: str,
         height: The height of the generated palette image in pixels. Defaults to 100.
     """
     data = await get_img_palette(image_path)
-    save_path = generate_palette_image(data,
-                                       output_path, color_key, max_colors, width, height)
-    return f"Palette image generated successfully. Check \"{save_path}\""
+    # Check if Imagga call returned an error before proceeding
+    if "error" in data or not data.get("result", {}).get("colors"):
+         error_message = data.get("status", {}).get("text", "Unknown error fetching colors")
+         return f"Error fetching colors from Imagga: {error_message}. Cannot generate palette."
+    elif "status" in data and data["status"].get("type") != "success":
+         return f"Imagga API call failed: {data['status'].get('text', 'Unknown reason')}"
+
+    try:
+        # Run the synchronous function in the default executor
+        loop = asyncio.get_running_loop()
+        save_path = await loop.run_in_executor(
+            None, # Use default executor (ThreadPoolExecutor)
+            generate_palette_image, # The function to run
+            data,          # Arguments for the function
+            output_path,
+            color_key,
+            max_colors,
+            width,
+            height
+        )
+        if save_path: # Check if generate_palette_image returned a path
+             return f"Palette image generated successfully. Check \"{save_path}\""
+        else:
+             # Handle cases where generate_palette_image might return None on error
+             return "Failed to generate palette image. Check server logs for details."
+    except Exception as e:
+        # Log the error properly in a real app
+        print(f"Error during palette generation: {e}") # Log to server console
+        return f"An error occurred during palette generation: {e}"
 
 if __name__ == "__main__":
     # Initialize and run the server
+    print("Starting FastMCP server...")
     mcp.run(transport='stdio')
