@@ -1,0 +1,129 @@
+{
+    "result": {
+        "colors": {
+            "background_colors": [
+                {
+                    "b": 83,
+                    "closest_palette_color": "ebony",
+                    "closest_palette_color_html_code": "#41424a",
+                    "closest_palette_color_parent": "black",
+                    "closest_palette_distance": 5.99437952041626,
+                    "g": 80,
+                    "html_code": "#4c5053",
+                    "percent": 44.201976776123,
+                    "r": 76
+                },
+                {
+                    "b": 115,
+                    "closest_palette_color": "charcoal gray",
+                    "closest_palette_color_html_code": "#80817d",
+                    "closest_palette_color_parent": "grey",
+                    "closest_palette_distance": 3.13128995895386,
+                    "g": 123,
+                    "html_code": "#7b7b73",
+                    "percent": 32.3862648010254,
+                    "r": 123
+                },
+                {
+                    "b": 37,
+                    "closest_palette_color": "graphite",
+                    "closest_palette_color_html_code": "#3a3536",
+                    "closest_palette_color_parent": "black",
+                    "closest_palette_distance": 9.42105388641357,
+                    "g": 47,
+                    "html_code": "#2e2f25",
+                    "percent": 23.4117584228516,
+                    "r": 46
+                }
+            ],
+            "color_percent_threshold": 1.75,
+            "color_variance": 30,
+            "foreground_colors": [
+                {
+                    "b": 171,
+                    "closest_palette_color": "frost",
+                    "closest_palette_color_html_code": "#aeb2b5",
+                    "closest_palette_color_parent": "light grey",
+                    "closest_palette_distance": 2.80790066719055,
+                    "g": 169,
+                    "html_code": "#a8a9ab",
+                    "percent": 53.4607772827148,
+                    "r": 168
+                },
+                {
+                    "b": 50,
+                    "closest_palette_color": "ribbon red",
+                    "closest_palette_color_html_code": "#a4292e",
+                    "closest_palette_color_parent": "red",
+                    "closest_palette_distance": 3.21952128410339,
+                    "g": 55,
+                    "html_code": "#a93732",
+                    "percent": 39.0573501586914,
+                    "r": 169
+                },
+                {
+                    "b": 73,
+                    "closest_palette_color": "ebony",
+                    "closest_palette_color_html_code": "#41424a",
+                    "closest_palette_color_parent": "black",
+                    "closest_palette_distance": 1.50037372112274,
+                    "g": 66,
+                    "html_code": "#3f4249",
+                    "percent": 7.48187208175659,
+                    "r": 63
+                }
+            ],
+            "image_colors": [
+                {
+                    "b": 93,
+                    "closest_palette_color": "blue steel",
+                    "closest_palette_color_html_code": "#626879",
+                    "closest_palette_color_parent": "grey",
+                    "closest_palette_distance": 9.72460746765137,
+                    "g": 93,
+                    "html_code": "#5a5d5d",
+                    "percent": 47.1327590942383,
+                    "r": 90
+                },
+                {
+                    "b": 47,
+                    "closest_palette_color": "graphite",
+                    "closest_palette_color_html_code": "#3a3536",
+                    "closest_palette_color_parent": "black",
+                    "closest_palette_distance": 7.4400200843811,
+                    "g": 53,
+                    "html_code": "#33352f",
+                    "percent": 31.5104160308838,
+                    "r": 51
+                },
+                {
+                    "b": 144,
+                    "closest_palette_color": "cathedral",
+                    "closest_palette_color_html_code": "#9f9c99",
+                    "closest_palette_color_parent": "grey",
+                    "closest_palette_distance": 4.21676588058472,
+                    "g": 150,
+                    "html_code": "#949690",
+                    "percent": 16.5789756774902,
+                    "r": 148
+                },
+                {
+                    "b": 50,
+                    "closest_palette_color": "ribbon red",
+                    "closest_palette_color_html_code": "#a4292e",
+                    "closest_palette_color_parent": "red",
+                    "closest_palette_distance": 3.59693193435669,
+                    "g": 56,
+                    "html_code": "#aa3832",
+                    "percent": 3.18611812591553,
+                    "r": 170
+                }
+            ],
+            "object_percentage": 8.06228733062744
+        }
+    },
+    "status": {
+        "text": "",
+        "type": "success"
+    }
+}
