@@ -11,7 +11,7 @@ uv sync
 {
   "mcpServers": {
     "mcp-pallete": {
-      "command": "uv", # or your uv executable path
+      "command": "uv", // or your uv executable path
       "args": [
         "--directory",
         "/ABSOLUTE/PATH/TO/PARENT/FOLDER/mcp-pallete",
